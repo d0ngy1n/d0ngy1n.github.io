@@ -68,13 +68,13 @@ footer:
     # Hexo link (Powered by Hexo).
     enable: true
     # Version info of Hexo after Hexo link (vX.X.X).
-    version: true
+    version: false
 
   theme:
     # Theme & scheme info link (Theme - NexT.scheme).
     enable: true
     # Version info of NexT after scheme info (vX.X.X).
-    version: true
+    version: false
 
   # Beian icp information for Chinese users. In China, every legal website should have a beian icp in website footer.
   # http://www.beian.miit.gov.cn
@@ -100,7 +100,7 @@ creative_commons:
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
   enable: false
-  permalink: https://github.com/yourname
+  permalink: https://github.com/d0ngy1n
   title: Follow me on GitHub
 
 
@@ -158,10 +158,10 @@ baidu_push: false
 # External url should start with http:// or https://
 menu:
   home: / || home
-  #about: /about/ || user
-  #tags: /tags/ || tags
-  #categories: /categories/ || th
+  categories: /categories/ || th
+  tags: /tags/ || tags
   archives: /archives/ || archive
+  about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -177,8 +177,8 @@ menu_settings:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
-#scheme: Mist
+# scheme: Muse
+scheme: Mist
 #scheme: Pisces
 #scheme: Gemini
 
@@ -197,7 +197,7 @@ site_state: true
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
-  #GitHub: https://github.com/yourname || github
+  GitHub: https://github.com/d0ngy1n || github
   #E-Mail: mailto:yourname@gmail.com || envelope
   #Weibo: https://weibo.com/yourname || weibo
   #Google: https://plus.google.com/yourname || google
@@ -227,11 +227,11 @@ avatar:
   # In theme directory (source/images): /images/avatar.gif
   # In site directory (source/uploads): /uploads/avatar.gif
   # You can also use other linking images.
-  url: #/images/avatar.gif
+  url: /images/avatar.gif
   # If true, the avatar would be dispalyed in circle.
   rounded: false
   # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.
-  opacity: 1
+  opacity: 0.8
   # If true, the avatar would be rotated with the cursor.
   rotated: false
 
@@ -244,7 +244,7 @@ toc:
   wrap: false
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
   expand_all: false
-  # Maximum heading depth of generated toc. You can set it in one post through `toc_max_depth` in Front-matter.
+  # Maximum heading depth of generated toc. You can set it in one post through `toc_max_depth` in Front Matter.
   max_depth: 6
 
 sidebar:
@@ -356,7 +356,7 @@ wechat_subscriber:
 # Reward (Donate)
 reward_settings:
   # If true, reward would be displayed in every article by default.
-  # You can show or hide reward in a specific article throuth `reward: true | false` in Front-matter.
+  # You can show or hide reward in a specific article throuth `reward: true | false` in Front Matter.
   enable: false
   animation: false
   #comment: Donate comment here
@@ -412,7 +412,7 @@ custom_logo:
 # Code Highlight theme
 # Available values: normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 # Enable "cheers" for archive page.
 cheers: true
@@ -498,14 +498,14 @@ math:
   enable: false
 
   # Default (true) will load mathjax / katex script on demand.
-  # That is it only render those page which has `mathjax: true` in Front-matter.
+  # That is it only render those page which has `mathjax: true` in Front Matter.
   # If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.
   per_page: true
 
   engine: mathjax
   #engine: katex
 
-  # hexo-renderer-pandoc (or hexo-renderer-kramed) needed to full MathJax support.
+  # hexo-rendering-pandoc (or hexo-renderer-kramed) needed to full MathJax support.
   mathjax:
     cdn: //cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML
     #cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML
@@ -541,7 +541,7 @@ quicklink:
   enable: false
 
   # Quicklink (quicklink.umd.js script) is loaded on demand
-  # Add `quicklink: true` in Front-matter of the page or post you need
+  # Add `quicklink: true` in Front Matter of the page or post you need
   # Home page and archive page can be controlled through home and archive options below
   home: true
   archive: true
@@ -859,7 +859,7 @@ algolia_search:
 # Local search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
@@ -970,7 +970,7 @@ motion:
 # Choose only one variant, do not need to install both.
 # To install 2.x: https://github.com/theme-next/theme-next-fancybox
 # To install 3.x: https://github.com/theme-next/theme-next-fancybox3
-fancybox: false
+fancybox: true
 
 # Polyfill to remove click delays on browsers with touch UIs.
 # Dependencies: https://github.com/theme-next/theme-next-fastclick
