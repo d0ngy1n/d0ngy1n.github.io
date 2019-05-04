@@ -9,10 +9,10 @@ tags:
 - unsplash
 ---
 
-<!-- ## cat from unsplash -->
-
+Cute~~,Ha?
 {% img [fancybox] https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80 %}
 
+<!-- more --> 
 
 {% img [fancybox] https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80 %}
 
@@ -20,4 +20,3 @@ tags:
 {% img [fancybox] https://images.unsplash.com/photo-1489084917528-a57e68a79a1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80 %}
 
 
-Cute~~,Ha?
