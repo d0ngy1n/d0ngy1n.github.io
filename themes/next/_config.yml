@@ -94,8 +94,8 @@ footer:
 creative_commons:
   license: by-nc-sa
   sidebar: false
-  post: false
-  language:
+  post: true
+  language: deed.zh
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
@@ -323,9 +323,10 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enable: true
+    enable: false
     another_day: true
   categories: true
+  views: true
 
 # Post wordcount display settings
 # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
