@@ -8,7 +8,7 @@ subtitle:
 description: 只有我守着爱情的沙漠，等待着花开～
 keywords:
 author: d0ngy1n
-language: zh-CN
+language: zh-Hans
 timezone: 
 
 # URL
@@ -75,12 +75,20 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+leancloud_counter_security:
+  enable_sync: true
+  app_id: mDwvYYf9UhSb1L1tuCOOAVn3-gzGzoHsz
+  app_key: u5V87aX0tWCwuoMpiqwRqzUH
+  username: #{leancloud_username}
+  password: #{leancloud_password}
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@github.com:d0ngy1n/d0ngy1n.github.io.git
-  branch: master
+  - type: leancloud_counter_security_sync
+  - type: git
+  - repo: git@github.com:d0ngy1n/d0ngy1n.github.io.git
+  - branch: master
 
 
 # Local Search 
