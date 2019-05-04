@@ -87,8 +87,8 @@ leancloud_counter_security:
 deploy:
   - type: leancloud_counter_security_sync
   - type: git
-  - repo: git@github.com:d0ngy1n/d0ngy1n.github.io.git
-  - branch: master
+    repo: git@github.com:d0ngy1n/d0ngy1n.github.io.git
+    branch: master
 
 
 # Local Search 
