@@ -23,8 +23,10 @@
 ### TODOs
 - [x] build & manage Github Pages with Hexo
 - [x] autobuild with Travis
-- [ ] write README document
+- [x] write README document
 - [ ] add some Hexo plugins
+- [x] enable post views with Leancloud 
+- [ ] enable valine the comment plugin
 
 ### Environment
 ```shell
