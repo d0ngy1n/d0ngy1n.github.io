@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: D0ngY1n's Blog
+title: 冬隐空
 subtitle: 
-description: 只有我守着爱情的沙漠，等待着花开～
+description: 彩色的声音尝起来是甜的
 keywords:
-author: d0ngy1n
+author: 冬隐
 language: zh-CN
 timezone: 
 
@@ -18,7 +18,7 @@ root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
-# Directory
+# Directoryxo
 source_dir: source
 public_dir: public
 tag_dir: tags
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next #diaspora
 
 leancloud_counter_security:
   enable_sync: true
