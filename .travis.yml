@@ -3,6 +3,7 @@ node_js: stable
 branchs:
   only:
   - develop
+  - feature/theme-diaspora
 before_install:
 - export TZ='Asia/Shanghai'
 install:
