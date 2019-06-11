@@ -74,7 +74,7 @@ yum install npm
 
 ```bash
 # 安装依赖
-sudo yum install libffi-devel zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+sudo yum install -y libffi-devel zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel gcc
 
 # 安装pyenv
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -86,6 +86,8 @@ source ~/.zshenv
 # pyenv install 3.7.3
 # 离线安装
 v=3.7.3; wget https://www.python.org/ftp/python/$v/Python-$v.tar.xz -P "$PYENV_ROOT"/cache/;pyenv install $v
+
+pyenv global 3.7.3
 
 # 安装集成包
 pyenv install anaconda3-2019.03
