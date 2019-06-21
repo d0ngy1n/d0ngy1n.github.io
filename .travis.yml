@@ -2,8 +2,7 @@ language: node_js
 node_js: stable
 branchs:
   only:
-  - develop
-  - feature/theme-diaspora
+  - /^release\/.*$/
 before_install:
 - export TZ='Asia/Shanghai'
 install:
