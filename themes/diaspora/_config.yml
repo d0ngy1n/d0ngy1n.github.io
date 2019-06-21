@@ -19,7 +19,9 @@ mp3:
   - https://datashat.net/music_for_programming_25-_nono_.mp3
 
 # 首页封面图, 为空时取文章的cover作为封面
-welcome_cover: /img/welcome-cover.jpg
+welcome_cover: https://source.unsplash.com/collection/4990163/1920x1080 #随机首页图片
+#https://images.unsplash.com/photo-1547893547-7c2ab2cc9689?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80
+  #/img/welcome-cover.jpg
 
 # 默认文章封面图
 cover: /img/cover.jpg
