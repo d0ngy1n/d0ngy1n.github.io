@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>bcc[centos7]环境搭建 - 冬隐空</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="DongYin,"> 
+    <meta name="description" content="彩色的声音尝起来是填的,本隐趁着百度云搞活动，花了x RMB抢了台最最最基础的服务器(bcc)，用来胡乱折腾。下文没有一点废话（废话都在开篇这里说完了）的阐述了怎么调教一台全裸的bcc，让其好用好看耐用耐看经用经看，折腾不,"> 
+    <meta name="author" content="冬隐"> 
+    <link rel="alternative" href="atom.xml" title="冬隐空" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">冬隐空</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="https://dongy.in"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">bcc[centos7]环境搭建</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">bcc[centos7]环境搭建</h1>
+        <div class="stuff">
+            <span>五月 10, 2019</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CentOS7/">CentOS7</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/bcc/">bcc</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/docker/">docker</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>本隐趁着百度云搞活动，花了<code>x RMB</code>抢了台最最最基础的服务器(<code>bcc</code>)，用来胡乱折腾。下文没有一点废话（废话都在开篇这里说完了）的阐述了怎么调教一台全裸的<code>bcc</code>，让其好用好看耐用耐看经用经看，折腾不止则更新不断<code>ing...</code></p>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83">基本环境</a></li>
+<li><a href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">开发环境</a><ul>
+<li><a href="#%E5%AE%89%E8%A3%85docker">安装docker</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="基本环境"><a href="#基本环境" class="headerlink" title="基本环境"></a>基本环境</h2><p>更新源，安装 <code>git</code> /<code>zsh &amp; oh-my-zsh &amp; plugins</code>/<code>pyenv &amp; anaconda</code>/<code>nodejs</code>/<code>常用shell命令</code>等。</p>
+<ol>
+<li>更新源 &amp; 安装系统工具</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line"></span><br><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装git</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>安装zsh &amp; oh my zsh</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install -y zsh</span><br><span class="line">chsh -s /bin/zsh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>安装oh my zsh plugins</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 开启vim代码高亮</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'syntax on'</span> &gt;&gt; ~/.vimrc</span><br><span class="line"></span><br><span class="line"><span class="comment">## 安装插件</span></span><br><span class="line"><span class="built_in">cd</span> ~/.oh-my-zsh/custom/plugins</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/wting/autojump.git</span><br><span class="line"></span><br><span class="line"><span class="comment">## 更换主题、开启插件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line">ZSH_THEME=<span class="string">"ys"</span></span><br><span class="line">plugins=(git zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>安装nodejs</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install nodejs</span><br><span class="line">yum install npm</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>安装pyenv &amp; anaconda</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">sudo yum install -y libffi-devel zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel gcc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装pyenv</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/pyenv/pyenv.git ~/.pyenv</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.zshenv</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt;~/.zshenv  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt;~/.zshenv</span><br><span class="line"><span class="built_in">source</span> ~/.zshenv</span><br><span class="line"></span><br><span class="line"><span class="comment"># pyenv install 3.7.3</span></span><br><span class="line"><span class="comment"># 离线安装</span></span><br><span class="line">v=3.7.3; wget https://www.python.org/ftp/python/<span class="variable">$v</span>/Python-<span class="variable">$v</span>.tar.xz -P <span class="string">"<span class="variable">$PYENV_ROOT</span>"</span>/cache/;pyenv install <span class="variable">$v</span></span><br><span class="line"></span><br><span class="line">pyenv global 3.7.3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装集成包</span></span><br><span class="line">pyenv install anaconda3-2019.03</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>安装autojump</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.oh-my-zsh/custom/plugins</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/wting/autojump.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> autojump &amp;&amp; ./install.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑.zshrc文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line">[[ -s /root/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; <span class="built_in">source</span> /root/.autojump/etc/profile.d/autojump.sh</span><br><span class="line"><span class="built_in">autoload</span> -U compinit &amp;&amp; compinit -u</span><br><span class="line"></span><br><span class="line">plugins=(git autojump zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure>
+
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><ol>
+<li><p>添加软件源信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新 yum 缓存：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Docker-ce：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install docker-ce</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 Docker 后台服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>镜像加速:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'&#123;"registry-mirrors": ["http://hub-mirror.c.163.com"]&#125;'</span> &gt; /etc/docker/daemon.json</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="https://datashat.net/music_for_programming_1-datassette.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci='486e44393db994596d10'
+        data-cs='8800cfb59da1202122ea9b1ace74aba4bf371085'
+        data-r='d0ngy1n.github.io'
+        data-o='d0ngy1n'
+        data-a='d0ngy1n'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-139580542-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+</html>
