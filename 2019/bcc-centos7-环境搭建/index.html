@@ -65,10 +65,6 @@
             <p>本隐趁着百度云搞活动，花了<code>x RMB</code>抢了台最最最基础的服务器(<code>bcc</code>)，用来胡乱折腾。下文没有一点废话（废话都在开篇这里说完了）的阐述了怎么调教一台全裸的<code>bcc</code>，让其好用好看耐用耐看经用经看，折腾不止则更新不断<code>ing...</code></p>
 <ul>
 <li><a href="#%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83">基本环境</a></li>
-<li><a href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">开发环境</a><ul>
-<li><a href="#%E5%AE%89%E8%A3%85docker">安装docker</a></li>
-</ul>
-</li>
 </ul>
 <h2 id="基本环境"><a href="#基本环境" class="headerlink" title="基本环境"></a>基本环境</h2><p>更新源，安装 <code>git</code> /<code>zsh &amp; oh-my-zsh &amp; plugins</code>/<code>pyenv &amp; anaconda</code>/<code>nodejs</code>/<code>常用shell命令</code>等。</p>
 <ol>
@@ -89,12 +85,12 @@
 <ol start="4">
 <li>安装oh my zsh plugins</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 开启vim代码高亮</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'syntax on'</span> &gt;&gt; ~/.vimrc</span><br><span class="line"></span><br><span class="line"><span class="comment">## 安装插件</span></span><br><span class="line"><span class="built_in">cd</span> ~/.oh-my-zsh/custom/plugins</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/wting/autojump.git</span><br><span class="line"></span><br><span class="line"><span class="comment">## 更换主题、开启插件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line">ZSH_THEME=<span class="string">"ys"</span></span><br><span class="line">plugins=(git zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 开启vim代码高亮</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'syntax on'</span> &gt;&gt; ~/.vimrc</span><br><span class="line"></span><br><span class="line"><span class="comment">## 安装插件</span></span><br><span class="line"><span class="built_in">cd</span> ~/.oh-my-zsh/custom/plugins</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git</span><br><span class="line"></span><br><span class="line"><span class="comment">## 更换主题、开启插件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line">ZSH_THEME=<span class="string">"ys"</span></span><br><span class="line">plugins=(git zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure>
 
 <ol start="5">
 <li>安装nodejs</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install nodejs</span><br><span class="line">yum install npm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nodejs</span><br></pre></td></tr></table></figure>
 
 <ol start="6">
 <li>安装pyenv &amp; anaconda</li>
@@ -105,24 +101,6 @@
 <li>安装autojump</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.oh-my-zsh/custom/plugins</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/wting/autojump.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> autojump &amp;&amp; ./install.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑.zshrc文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line">[[ -s /root/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; <span class="built_in">source</span> /root/.autojump/etc/profile.d/autojump.sh</span><br><span class="line"><span class="built_in">autoload</span> -U compinit &amp;&amp; compinit -u</span><br><span class="line"></span><br><span class="line">plugins=(git autojump zsh-syntax-highlighting)</span><br></pre></td></tr></table></figure>
-
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><ol>
-<li><p>添加软件源信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更新 yum 缓存：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 Docker-ce：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install docker-ce</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动 Docker 后台服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>镜像加速:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'&#123;"registry-mirrors": ["http://hub-mirror.c.163.com"]&#125;'</span> &gt; /etc/docker/daemon.json</span><br></pre></td></tr></table></figure></li>
-</ol>
-
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
                 <source type="audio/mpeg" src="https://datashat.net/music_for_programming_1-datassette.mp3">
@@ -207,18 +185,6 @@
 </div>
 
 
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-139580542-1', 'auto');
-  ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
 
 
 </html>
