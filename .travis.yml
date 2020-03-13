@@ -16,11 +16,11 @@ after_success:
 - git config --global user.name "d0ngy1n"
 - git config --global user.email "d0ngy1n@163.com"
 # - git add .
-# - git commit -m 'update'
+# - git commit -m 'x'
 # - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 - sed -i'' "s~git@github.com:${GH_REF}~https://${GH_TOKEN}:x-oauth-basic@github.com/${GH_REF}~" _config.yml
-- sed -i'' "s~#{leancloud_username}~${LC_USERNAME}~" _config.yml
-- sed -i'' "s~#{leancloud_password}~${LC_PASSWORD}~" _config.yml
+#- sed -i'' "s~#{leancloud_username}~${LC_USERNAME}~" _config.yml
+#- sed -i'' "s~#{leancloud_password}~${LC_PASSWORD}~" _config.yml
 - hexo deploy
 env:
   global:
