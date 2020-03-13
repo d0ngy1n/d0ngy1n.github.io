@@ -58,7 +58,7 @@ unicode: 12.1
 ```
 
 ### Install Hexo
-在安装[Hexo](https://hexo.io/zh-cn/index.html)之前，需要确保已经安装了brew, git, node, npm, cnpm (最好能翻墙)。
+在安装[Hexo](https://hexo.io/zh-cn/index.html)之前，需要确保已经安装了git, node。
 
 安装hexo-cli
 ```shell
